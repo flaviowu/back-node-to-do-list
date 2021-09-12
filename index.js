@@ -4,9 +4,17 @@ if (process.env.NODEENV !== "production") {
 
 const express = require("express");
 const Conn = require("./models/conn/conn");
+const cors = require('cors');
 const port = 3005;
 const server = express();
 server.use(express.json());
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+server.use(cors(corsOptions));
 
 const db_url = process.env.DB_URL;
 const db_user = process.env.DB_USER;
