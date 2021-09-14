@@ -5,8 +5,8 @@ const tarefaModel = new mongoose.Schema({
     descricao: { type: String },
     prioridade: { type: Number, required: true },
     situacao: { type: String, required:true },
-    prazo: { type: String, required: true },
-    dataCriacao: { type: String, default: Date.now},
+    prazo: { type: Date, required: true },
+    dataCriacao: { type: Date, default: Date.now},
 })
 
 const Tarefa = mongoose.model("tarefas", tarefaModel)
