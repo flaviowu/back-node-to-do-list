@@ -30,6 +30,6 @@ server.get("/", (req, res) => {
 const tarefa = require("./routers/tarefas.routes");
 server.use("/tarefas", tarefa);
 
-server.listen(port, () => {
-  console.info(`Servidor rodando em http://localhost:${port}/`);
-});
+app.listen(process.env.PORT || port, ()=> {
+  console.info(`Servidor rodando na porta ${port}`);
+})
