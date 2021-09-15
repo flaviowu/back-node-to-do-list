@@ -30,6 +30,6 @@ server.get("/", (req, res) => {
 const tarefa = require("./routers/tarefas.routes");
 server.use("/tarefas", tarefa);
 
-app.listen(process.env.PORT || port, ()=> {
+server.listen(process.env.PORT || port, ()=> {
   console.info(`Servidor rodando na porta ${port}`);
 })
