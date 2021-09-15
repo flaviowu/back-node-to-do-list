@@ -1,4 +1,4 @@
-if (process.env.NODEENV !== "production") {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
@@ -14,7 +14,7 @@ const corsOptions = {
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-server.use(cors(corsOptions));
+server.use(cors());
 
 const db_url = process.env.DB_URL;
 const db_user = process.env.DB_USER;
