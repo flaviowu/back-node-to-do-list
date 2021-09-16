@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.get("/sortByPrioridade", async (req, res) => {
+router.get("/sortByPrioridade", async (_, res) => {
   await Tarefa.find({})
     .then((tarefa) => {
       tarefa = ordenar.porPrioridade(tarefa);
@@ -30,7 +30,7 @@ router.get("/sortByPrioridade", async (req, res) => {
     });
 });
 
-router.get("/sortByPrazo", async (req, res) => {
+router.get("/sortByPrazo", async (_, res) => {
   await Tarefa.find({})
     .then((tarefa) => {
       tarefa = ordenar.porPrazo(tarefa);
@@ -39,7 +39,7 @@ router.get("/sortByPrazo", async (req, res) => {
     .catch((err) => {
       res
         .status(400)
-        .send("Não foi possível fazer sua requisição. Tente novamente.");
+        .send("Não foi possível fazer sua requisição.");
       console.error(err);
     });
 });
@@ -65,7 +65,7 @@ router.post("/add", async (req, res) => {
       res.status(200).send("Tarefa adicionada com Sucesso!");
     })
     .catch((err) => {
-      res.status(400).send("Verifique a tarefa e tente novamente.");
+      res.status(400).send("Verifique o body.");
       console.error(err);
     });
 });
@@ -76,7 +76,7 @@ router.put("/update/:id", async (req, res) => {
       res.status(200).send("Tarefa atualizada com sucesso");
     })
     .catch((err) => {
-      res.status(400).send("Algo deu errado na requisição, tente novamente");
+      res.status(400).send("Verrifique o ID");
       console.error(err);
     });
 });
@@ -87,7 +87,7 @@ router.delete("/delete/:id", async (req, res) => {
       res.status(200).send(`Tarefa excluída com sucesso`);
     })
     .catch((err) => {
-      res.status(400).send("Algo deu errado na requisição, tente novamente");
+      res.status(400).send("Verifique o ID");
       console.error(err);
     });
 });
